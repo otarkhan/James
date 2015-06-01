@@ -1,0 +1,473 @@
+#include <LiquidCrystal.h>
+
+#define relay1 22            //1st relay signal pin
+#define relay2 23            //2nd relay signal pin
+#define relay3 24            //3rd relay signal pin
+#define relay4 25            //4th relay signal pin
+#define relay5 26            //5th relay signal pin
+#define relay6 27            //6th relay signal pin
+
+#define button1 14           //Reset button
+#define button2 15           //Previous button
+#define button3 16           //Next button
+#define button4 17           //Release button
+
+LiquidCrystal lcd(12,11,5,4,3,2);   //lcd pins(RS,E,D4,D5,D6,D7)
+
+unsigned int x = 0;
+int t1 = 0;
+int t2 = 0;
+
+void setup()
+{ 
+  lcd.begin(16, 2);
+  
+  pinMode(relay1,OUTPUT);
+  pinMode(relay2,OUTPUT);
+  pinMode(relay3,OUTPUT); 
+  pinMode(relay4,OUTPUT);
+  pinMode(relay5,OUTPUT);
+  pinMode(relay6,OUTPUT); 
+  
+  pinMode(button1,INPUT);
+  pinMode(button2,INPUT);
+  pinMode(button3,INPUT);
+  pinMode(button4,INPUT);
+
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+}
+
+void loop()
+{
+  
+  if ( x == 0 )
+    {
+      
+      for ( int i=0 ; i < 5 ; i++ )
+        {
+        lcd.setCursor(0,0);
+        lcd.print("   Welcome to ");
+        lcd.setCursor(0, 1);
+        lcd.print("                ");
+        delay(2000);
+        lcd.setCursor(0, 0);
+        lcd.print("   Stockwood    ");
+        lcd.setCursor(0, 1);
+        lcd.print(" Vale Gun Club");
+        delay(2000);
+        }
+      x = 1;
+    }
+  
+
+  
+  if ( digitalRead(button1) == 1 )
+   {  
+      x = 1 ;
+      delay(300);
+    } 
+    
+  else if ( digitalRead(button2) == 1 && x > 1 )
+    {  
+      x --;
+      delay(300);
+    } 
+    
+  else if (digitalRead(button3)==1)
+    {
+      x ++;
+      delay(300);
+    }
+  
+  else if ( digitalRead(button4)==1 )
+    {
+  t1 = millis();
+  
+  if ( x == 1 )
+  {
+  digitalWrite(relay1,1);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 2 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,1);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 3 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,1);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 4 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,1);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 5 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,1);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 6 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,1);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 7 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,1);
+  }
+  
+  else if ( x == 8 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,1);
+  }
+  
+  else if ( x == 9 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,1);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 10 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,1);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 11 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,1);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 12 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,1);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 13 )
+  {
+  digitalWrite(relay1,1);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 14 )
+  {
+  digitalWrite(relay1,1);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 15 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,1);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 16 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,1);
+  digitalWrite(relay3,1);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 17 )
+  {
+  digitalWrite(relay1,1);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,1);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  else if ( x == 18 )
+  {
+  digitalWrite(relay1,1);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,1);
+  }
+  
+  else if ( x == 19 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,1);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,1);
+  }
+  
+  else if ( x == 20 )
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,1);
+  digitalWrite(relay4,1);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  } 
+  delay(10);
+  t2 = millis() - t1;
+  }
+
+  else 
+  {
+  digitalWrite(relay1,0);
+  digitalWrite(relay2,0);
+  digitalWrite(relay3,0);
+  digitalWrite(relay4,0);
+  digitalWrite(relay5,0);
+  digitalWrite(relay6,0);
+  }
+  
+  if (digitalRead(button4)==0 && t2 > 8 && t2 < 12 )
+  {
+    t1 = 0;
+    t2 = 0;
+    x++;
+  }
+  
+  if ( x == 1 )
+  {  
+  lcd.setCursor(0,0);
+  lcd.print("   1 ROUND 1    ");
+  lcd.setCursor(0, 1);
+  lcd.print(" STAND 1 TRAP A ");
+  }
+  
+  else if ( x == 2 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("   2 ROUND 1    ");
+  lcd.setCursor(0, 1);
+  lcd.print(" STAND 2 TRAP B ");
+  }
+  
+  else if ( x == 3 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("   3 ROUND 1    ");
+  lcd.setCursor(0, 1);
+  lcd.print(" STAND 3 TRAP C ");
+  }
+  
+  else if ( x == 4 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("   4 ROUND 1    ");
+  lcd.setCursor(0, 1);
+  lcd.print(" STAND 4 TRAP D ");
+  }
+  
+  else if ( x == 5 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("   5 ROUND 1    ");
+  lcd.setCursor(0, 1);
+  lcd.print(" STAND 5 TRAP E ");
+  }
+  
+  else if ( x == 6 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("6 ROUND 2 STAND ");
+  lcd.setCursor(0, 1);
+  lcd.print("1 TRAPS E THEN f");
+  }
+  
+  else if ( x == 7 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("7 ROUND 2 STAND ");
+  lcd.setCursor(0, 1);
+  lcd.print("1 TRAPS e THEN F");
+  }
+  
+  else if ( x == 8 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("8 ROUND 2 STAND ");
+  lcd.setCursor(0, 1);
+  lcd.print("2 TRAPS F THEN d");
+  }
+  
+  else if ( x == 9 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("9 ROUND 2 STAND ");
+  lcd.setCursor(0, 1);
+  lcd.print("2 TRAPS f THEN D");
+  }
+  
+  else if ( x == 10 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("10 ROUND 2 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("3 TRAPS D THEN e");
+  }
+  
+  else if ( x == 11 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("11 ROUND 2 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("3 TRAPS d THEN E");
+  }
+  
+  else if ( x == 12 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("12 ROUND 2 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("4 TRAPS E THEN a");
+  }
+  
+  else if ( x == 13 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("13 ROUND 2 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("4 TRAPS e THEN A");
+  }
+  
+  else if ( x == 14 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("14 ROUND 2 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("5 TRAPS A THEN b");
+  }
+  
+  else if ( x == 15 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("15 ROUND 2 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("5 TRAPS a THEN B");
+  }
+  
+  else if ( x == 16 )
+  {  
+  lcd.setCursor(0,0);
+  lcd.print("16 ROUND 3 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("1 TRAPS B AND C ");
+  }
+  
+  else if ( x == 17 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("17 ROUND 3 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("2 TRAPS C AND A ");
+  }
+  
+  else if ( x == 18 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("18 ROUND 3 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("3 TRAPS A AND F ");
+  }
+  
+  else if ( x == 19 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("19 ROUND 3 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("4 TRAPS F AND C ");
+  }
+  
+  else if ( x == 20 )
+  {
+  lcd.setCursor(0,0);
+  lcd.print("20 ROUND 3 STAND");
+  lcd.setCursor(0, 1);
+  lcd.print("5 TRAPS C and D ");
+  }
+  
+  if ( x  == 21 )
+      x = 1;  
+}
