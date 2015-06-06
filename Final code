@@ -306,6 +306,7 @@ void loop()
     t1 = 0;
     t2 = 0;
     x++;
+    delay(300);
   }
   
   if ( x == 1 )
