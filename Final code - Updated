@@ -20,7 +20,6 @@ int lastreading = 0;
 void setup()
 { 
   lcd.begin(16, 2);
-  Serial.begin(9600);
   
   pinMode(relay1,OUTPUT);
   pinMode(relay2,OUTPUT);
@@ -44,6 +43,25 @@ void setup()
 
 void loop()
 { 
+if ( x == 0 )
+    {
+      
+      for ( int i=0 ; i < 5 ; i++ )
+        {
+        lcd.setCursor(0,0);
+        lcd.print("   Welcome to ");
+        lcd.setCursor(0, 1);
+        lcd.print("                ");
+        delay(2000);
+        lcd.setCursor(0, 0);
+        lcd.print("   Stockwood    ");
+        lcd.setCursor(0, 1);
+        lcd.print(" Vale Gun Club");
+        delay(2000);
+        }
+      x = 1;
+    }
+    
   if ( digitalRead(button1) == 1 )
    {  
       x = 1 ;
@@ -65,7 +83,6 @@ void loop()
   else if ( digitalRead(button4)==1 && lastreading==0)
     {
   lastreading=1;
-  Serial.println("HIGH");
   if ( x == 1 )
   {
   digitalWrite(relay1,1);
@@ -454,7 +471,6 @@ void loop()
   
   if (digitalRead(button4)==0 && lastreading==1 )
   {
-    Serial.println("Low");
     lastreading=0;
     x++;
     j=0;
