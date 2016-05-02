@@ -65,18 +65,21 @@ if ( x == 0 )
   if ( digitalRead(button1) == 1 )
    {  
       x = 1 ;
+      j=0;
       delay(300);
     } 
     
   else if ( digitalRead(button2) == 1 && x > 1 )
     {  
       x --;
+      j=0;
       delay(300);
     } 
     
   else if (digitalRead(button3)==1)
     {
       x ++;
+      j=0;
       delay(300);
     }
   
@@ -642,7 +645,8 @@ if ( x == 0 )
 
   
   if ( x  == 21 )
-      x = 1;  
+      x = 1; 
+      j=0;
       
   
 //lastreading=digitalRead(button4);
